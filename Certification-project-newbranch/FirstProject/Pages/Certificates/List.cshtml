@@ -1,0 +1,34 @@
+﻿@page
+@model FirstProject.Pages.Certificates.ListModel
+@{
+    ViewData["Title"] = "Certifications";
+}
+    <header>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    </header>
+<h1>Certifications</h1>
+<form  mehod="get">
+    <div class="form-group">
+        <div class="input-group"> 
+            <input type="search" class="form-control" asp-for="SearchTerm" />
+            <span class="input-group-btn">
+                <button class="input-group-btn btn-default">
+                    <i class="fas fa-search"></i>
+                </button>
+            </span>
+            </div>
+    </div>
+</form>
+
+@foreach(var certification in Model.Certifications)
+{
+ <partial name="_Summary" model="certification" />
+}
+
+<a asp-page="./Edit" class="btn btn-primary">Add new certification </a>
+
+@section footer {
+<div>@Model.Message</div>
+}

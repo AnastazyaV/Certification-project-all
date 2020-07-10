@@ -1,0 +1,23 @@
+﻿@page "{certificationId:int}"
+@model Certification.Main.Pages.Certificates.DetailModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+    <h2>@Model.Certification.NGroup</h2>
+<div>
+    Id: @Model.Certification.IdCertif
+</div>
+<div>
+    Date of certification: @Model.Certification.CMonth
+</div>
+<div>
+    Name of professor: @Model.Certification.CYear
+</div>
+<br />
+@if(Model.Message != null)
+{
+    <div class="alert alert-info">@Model.Message</div>
+}
+<a asp-page="./List" class="btn btn-primary">Back to all certifications</a>
+

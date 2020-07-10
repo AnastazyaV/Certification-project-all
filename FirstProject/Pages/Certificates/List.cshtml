@@ -1,0 +1,23 @@
+﻿@page
+@model Certification.Main.Pages.Certificates.ListModel
+@{
+    ViewData["Title"] = "Certifications";
+}
+    <header>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    </header>
+<h1>Certifications</h1>
+
+
+@foreach(var certification in Model.certifications)
+{
+ <partial name="_Summary" model="certification" />
+}
+
+<a asp-page="./Edit" class="btn btn-primary">Add new certification </a>
+
+@section footer {
+<div>@Model.Message</div>
+}

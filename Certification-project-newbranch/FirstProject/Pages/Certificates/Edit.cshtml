@@ -1,0 +1,29 @@
+﻿@page "{certificationId:int?}"
+@model Certification.Main.Pages.Certificates.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Editing cerification </h2>
+<form method="post">
+    <input type="hidden" asp-for="Certification.Id" />
+    <div class="form-group">
+        <label asp-for="Certification.NameOfProfessor"></label>
+        <input asp-for="Certification.NameOfProfessor" class="form-control" />
+        <span class="text-danger" asp-validation-for="Certification.NameOfProfessor"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Certification.DateOfCertification"></label>
+        <input asp-for="Certification.DateOfCertification" class="form-control" />
+        <span class="text-danger" asp-validation-for="Certification.DateOfCertification"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Certification.Group"></label>
+        <select class="form-control" asp-for="Certification.Group"
+                asp-items="Model.Groups">
+        </select>
+        <span class="text-danger" asp-validation-for="Certification.Group"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
