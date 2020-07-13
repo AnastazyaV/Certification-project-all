@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Certification.Core;
 using Certification.Core.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -29,8 +31,14 @@ namespace Certification.Data
         public virtual DbSet<Teaching> Teaching { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
-       
-
+        public void LoadByListAndRef<T>(ICollection<T> temp, string reference)
+        {
+            foreach (var t in temp)
+            {
+                Entry(t).Reference(reference).Load();
+            }
+        }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

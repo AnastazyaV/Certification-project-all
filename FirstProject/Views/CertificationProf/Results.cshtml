@@ -1,0 +1,27 @@
+﻿@model Certification.Core.Subjects
+@{
+    ViewData["Title"] = "Results";
+    Layout = "_Layout";
+}
+
+<h2>Введите данные аттестации</h2>
+
+<form asp-action="SaveResult" asp-controller="CertificationProfController">
+    @if (ViewBag.SubjectType > 0)
+    {
+        <select name="SelectListResult" asp-items="ViewBag.SelectList"></select>
+        <button type="submit" class="btn btn-primary" formaction="./SaveResult?idCertif=@ViewBag.IdCertif&login=@ViewBag.Login&markType=true&selectListResult=SelectListResult">
+            Сохранить
+        </button>
+    }
+    else
+    {
+        <div class="form-group">
+            <label for="Mark">Успеваемость</label>
+            <input name="Mark" min="0" max="100" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary" formaction="./SaveResult?idCertif=@ViewBag.IdCertif&login=@ViewBag.Login&markType=false&mark=Mark">
+            Сохранить
+        </button>
+    }
+</form>

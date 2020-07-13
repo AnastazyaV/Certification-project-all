@@ -1,0 +1,46 @@
+﻿@using Certification.Core
+@{
+    ViewData["Title"] = "Students";
+    Layout = "_Layout";
+
+}
+<h2>Список студентов</h2>
+
+<form asp-action="Students" method="post">
+    <table class="table">
+        @foreach (var student in ViewBag.Students)
+        {
+            <tr>
+                <td>
+                    <a href="./Results?idCertif=@ViewBag.IdCertif&loginStudent=@student.LoginStudent">@student.LoginStudentNavigation.Name</a>
+                </td>
+                <td>
+                    Оценка:
+                </td>
+                <td>
+                    @foreach (var result in ViewBag.Results)
+                    {
+                        @if (result.LoginStudent.Equals(student.LoginStudentNavigation.Login) && result.IdCertif == ViewBag.idCertif)
+                        {
+                            @if (ViewBag.Subject.SubjectType > 0)
+                            {
+                                if (result.Mark > 0)
+                                {
+                                    @SubjectType.Зачет
+                                }
+                                else
+                                {
+                                    @SubjectType.Незачет
+                                }
+                            }
+                            else
+                            {
+                                 <div>@result.Mark%</div>
+                            }
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+</form>

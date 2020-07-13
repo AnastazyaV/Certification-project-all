@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Students";
+    Layout = "_Layout";
+}
+
+@if (ViewBag.Status)
+{
+    <h2>Данные аттестации пользователя @ViewBag.User.Name добавлены</h2>
+}
+else
+{
+    @if (ViewBag.RangeError)
+    {
+        <h2>Ошибка: данные аттестации вне диапазона</h2>
+    }
+    else
+    {
+        <h2>Данные аттестации пользователя @ViewBag.User.Name уже были добавлены, вы не можете их иземнить</h2>
+    }
+}

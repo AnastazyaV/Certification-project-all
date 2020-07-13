@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "CertificationProf";
+    Layout = "_Layout";
+    var subjectNames = new List<string>();
+}
+
+<h2>Список предметов</h2>
+
+<table class="table">
+    @foreach (var teaching in ViewBag.Teachings)
+    {
+        @if (!subjectNames.Contains(teaching.IdSubjectNavigation.Name))
+        {
+            <tr>
+                <td>
+                    <a href="CertificationProf/Months?idSubject=@teaching.IdSubject">@teaching.IdSubjectNavigation.Name</a>
+                    
+                </td>
+            </tr>
+            subjectNames.Add(teaching.IdSubjectNavigation.Name);
+        }
+    }
+</table>

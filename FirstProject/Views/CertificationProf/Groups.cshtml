@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Groups";
+    Layout = "_Layout";
+}
+
+<h2>Список групп</h2>
+
+<table class="table">
+    @foreach (var certif in ViewBag.Certif)
+    {
+        <tr>
+            <td>
+                <a href="./Students?idCertif=@certif.IdCertif&nGroup=@certif.NGroup">
+                    @certif.NGroup
+                </a>
+            </td>
+        </tr>
+    }
+</table>

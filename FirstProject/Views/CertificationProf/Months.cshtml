@@ -1,0 +1,27 @@
+﻿@using Certification.Core.Models
+@{
+    ViewData["Title"] = "Months";
+    Layout = "_Layout";
+
+    Months stringMonths = new Months();
+    List<int> addedMonth = new List<int>();
+}
+
+<h2>Список месяцев</h2>
+
+<table class="table">
+    @foreach (var certif in ViewBag.Certif)
+    {
+        @if (!addedMonth.Contains(certif.CMonth))
+        {
+            <tr>
+                <td>
+                    <a href="./Groups?idSubject=@certif.IdSubject&month=@certif.CMonth">
+                        @stringMonths.contain[certif.CMonth]
+                    </a>
+                </td>
+            </tr>
+            addedMonth.Add(certif.CMonth);
+        }
+    }
+</table>
